@@ -23,7 +23,7 @@ class JokeBloc extends Bloc<JokeEvents, JokeViewStates> {
     yield JokeFetchingState();
     Joke joke;
     try {
-      if (event is NewJokeEvent) {
+      if (event is ClickedNewJokeEvent) {
         joke = await jokeRepository
             .getRandomJoke();
       } else if (event is ShareJokeEvent) {

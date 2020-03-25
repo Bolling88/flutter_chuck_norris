@@ -47,12 +47,16 @@ class _JokeViewState extends State<JokeView>{
               alignment: Alignment.center,
             ), Align(
               alignment: Alignment.bottomCenter,
-              child: FlatButton(
-                color: Colors.blue,
-                child: Text("Click for a new joke"),
-                  onPressed: (){
-                    _jokeBloc.add(NewJokeEvent());
-                  },
+              child: Padding(
+                padding: EdgeInsets.all(20),
+                child: FlatButton(
+                  color: Colors.blue,
+                  textColor: Colors.white,
+                  child: Text("Click for a new joke"),
+                    onPressed: (){
+                      _jokeBloc.add(ClickedNewJokeEvent());
+                    },
+                ),
               ),
             )],
           )
