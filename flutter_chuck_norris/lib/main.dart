@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
-import 'package:flutterchucknorris/views/joke_view.dart';
+import 'package:flutterchucknorris/screens/joke/joke_screen.dart';
 
 void main(){
   JokeRepository _repository = JokeRepository();
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white
       ),
-      home: JokeView(jokeRepository: jokeRepository),
+      home: JokeScreen(jokeRepository: jokeRepository),
     );
   }
 }
