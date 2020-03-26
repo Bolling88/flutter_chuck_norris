@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
-import 'package:flutterchucknorris/widgets/joke_widget.dart';
+import 'package:flutterchucknorris/screens/joke/bloc/joke_screen_states.dart';
+import 'package:flutterchucknorris/screens/joke/joke_screen_widgets.dart';
 
 import 'bloc/joke_bloc.dart';
 import 'bloc/joke_screen_events.dart';
@@ -50,13 +51,7 @@ class JokeScreenContent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             JokeWidget(),
-            RaisedButton.icon(
-              icon: Icon(Icons.save),
-              label: Text("Save to favourites"),
-              onPressed: () {
-                jokeBloc.add(OnSaveClicked());
-              },
-            ),
+            SaveJokeWidget(),
           ],
         ),
       ),
@@ -70,3 +65,4 @@ class JokeScreenContent extends StatelessWidget {
     );
   }
 }
+

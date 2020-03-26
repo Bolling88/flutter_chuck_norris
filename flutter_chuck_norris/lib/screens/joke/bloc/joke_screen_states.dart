@@ -10,3 +10,4 @@ class JokeFetchedState extends JokeScreenState {
 }
 class JokeErrorState extends JokeScreenState {}
 class JokeEmptyState extends JokeScreenState {}
+class JokeSavedState extends JokeScreenState {}
