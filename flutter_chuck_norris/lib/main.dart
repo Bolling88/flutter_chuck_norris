@@ -4,12 +4,12 @@ import 'package:flutterchucknorris/screens/joke/joke_screen.dart';
 
 void main(){
   JokeRepository _repository = JokeRepository();
-  runApp(MyApp(jokeRepository:_repository));
+  runApp(MyApp(_repository));
 }
 
 class MyApp extends StatelessWidget {
-  final JokeRepository jokeRepository;
-  MyApp({this.jokeRepository});
+  final JokeRepository _jokeRepository;
+  MyApp(this._jokeRepository);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         backgroundColor: Colors.white
       ),
-      home: JokeScreen(jokeRepository: jokeRepository),
+      home: JokeScreen(_jokeRepository),
     );
   }
 }

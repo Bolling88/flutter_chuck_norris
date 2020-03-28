@@ -1,6 +1,12 @@
-abstract class JokeScreenEvents{}
+import 'package:equatable/equatable.dart';
 
-class ClickedNewJokeEvent extends JokeScreenEvents{}
-class OnSaveClicked extends JokeScreenEvents{}
-class LongPressedJokeEvent extends JokeScreenEvents{}
-class ShareJokeEvent extends JokeScreenEvents{}
+abstract class JokeEvent extends Equatable {
+  const JokeEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class JokeEventRefresh extends JokeEvent {}
+
+class JokeEventSave extends JokeEvent {}

@@ -12,23 +12,34 @@ class JokeWidget extends StatelessWidget {
     //Keep the BlocBuilder as low as possible in the view hierarchy, since they
     //will redraw on state changed, and we don't want to redraw whole screens if just
     //a part of it changed
-    return BlocBuilder<JokeBloc, JokeScreenState>(
-      builder: (BuildContext context, state) {
-        switch (state.runtimeType) {
-          case JokeUninitializedState:
-            return JokeTextWidget(jokeText: "Unintialised State");
-          case JokeEmptyState:
-            return JokeTextWidget(jokeText: "No jokes found");
-          case JokeErrorState:
-            return JokeTextWidget(jokeText: "Something went wrong...");
-          case JokeFetchingState:
-            return Container(child: Center(child: CircularProgressIndicator()));
-          default:
-            final jokeFetchedState = state as JokeFetchedState;
-            final joke = jokeFetchedState.joke;
-            return JokeTextWidget(jokeText: joke.value);
+    return BlocListener<JokeBloc, JokeScreenState>(
+      listener: (BuildContext context, JokeScreenState state) {
+        if (state is JokeSavedState) {
+          Scaffold.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text('Joke have been saved'),
+            ),
+          );
         }
       },
+      child: BlocBuilder<JokeBloc, JokeScreenState>(
+        builder: (BuildContext context, state) {
+          switch (state.runtimeType) {
+            case JokeUninitializedState:
+              return JokeTextWidget(jokeText: "Unintialised State");
+            case JokeEmptyState:
+              return JokeTextWidget(jokeText: "No jokes found");
+            case JokeErrorState:
+              return JokeTextWidget(jokeText: "Something went wrong...");
+            case JokeFetchingState:
+              return Container(
+                  child: Center(child: CircularProgressIndicator()));
+            default :
+              return  JokeTextWidget(jokeText: state.joke.value);
+          }
+        },
+      ),
     );
   }
 }
@@ -36,7 +47,6 @@ class JokeWidget extends StatelessWidget {
 class SaveJokeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     // ignore: close_sinks, since screens.joke.bloc provider handles this automatically
     final JokeBloc jokeBloc = BlocProvider.of<JokeBloc>(context);
 
@@ -46,12 +56,15 @@ class SaveJokeWidget extends StatelessWidget {
         case JokeFetchedState:
           return RaisedButton.icon(
               onPressed: () {
-                jokeBloc.add(OnSaveClicked());
+                jokeBloc.add(JokeEventSave());
               },
               icon: Icon(Icons.save),
               label: Text("Save to favourites"));
         case JokeSavedState:
-          return RaisedButton.icon(onPressed: null, icon: Icon(Icons.save), label: Text("Saved to favourites"));
+          return RaisedButton.icon(
+              onPressed: null,
+              icon: Icon(Icons.save),
+              label: Text("Saved to favourites"));
         default:
           return SizedBox.shrink();
       }

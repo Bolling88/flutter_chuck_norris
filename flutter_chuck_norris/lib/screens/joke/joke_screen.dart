@@ -9,14 +9,14 @@ import 'bloc/joke_bloc.dart';
 import 'bloc/joke_screen_events.dart';
 
 class JokeScreen extends StatelessWidget {
-  final JokeRepository jokeRepository;
+  final JokeRepository _jokeRepository;
 
-  JokeScreen({this.jokeRepository});
+  JokeScreen(this._jokeRepository);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<JokeBloc>(
-      create: (context) => JokeBloc(jokeRepository: jokeRepository),
+      create: (context) => JokeBloc(_jokeRepository),
       child: JokeScreenContent(),
     );
   }
@@ -59,7 +59,7 @@ class JokeScreenContent extends StatelessWidget {
         icon: Icon(Icons.refresh),
         label: Text("New Joke"),
         onPressed: () {
-          jokeBloc.add(ClickedNewJokeEvent());
+          jokeBloc.add(JokeEventRefresh());
         },
       ),
     );
