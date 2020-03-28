@@ -8,14 +8,14 @@ import 'package:flutterchucknorris/screens/savedjokes/bloc/saved_jokes_bloc.dart
 
 class SavedJokesScreen extends StatelessWidget {
   static const routeName = '/saved_jokes';
-  final JokeRepository jokeRepository;
+  final JokeRepository _jokeRepository;
 
-  SavedJokesScreen({this.jokeRepository});
+  SavedJokesScreen(this._jokeRepository);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SavedJokesBloc>(
-      create: (context) => SavedJokesBloc(jokeRepository: jokeRepository),
+      create: (context) => SavedJokesBloc(_jokeRepository),
       child: JokeScreenContent(),
     );
   }
@@ -28,9 +28,6 @@ class JokeScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: close_sinks, since screens.joke.bloc provider handles this automatically
-    final SavedJokesBloc jokeBloc = BlocProvider.of<SavedJokesBloc>(context);
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

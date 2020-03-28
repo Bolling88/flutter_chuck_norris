@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: JokeScreen.routeName,
       routes: {
         JokeScreen.routeName: (context) => JokeScreen(_jokeRepository),
-        SavedJokesScreen.routeName: (context) => SavedJokesScreen(),
+        SavedJokesScreen.routeName: (context) => SavedJokesScreen(_jokeRepository),
       },
       theme:
           ThemeData(primarySwatch: Colors.blue, backgroundColor: Colors.white),
