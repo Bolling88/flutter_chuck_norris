@@ -9,6 +9,7 @@ import 'bloc/joke_bloc.dart';
 import 'bloc/joke_screen_events.dart';
 
 class JokeScreen extends StatelessWidget {
+  static const routeName = '/main';
   final JokeRepository _jokeRepository;
 
   JokeScreen(this._jokeRepository);

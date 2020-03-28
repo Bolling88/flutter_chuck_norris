@@ -7,6 +7,7 @@ import 'package:flutterchucknorris/screens/joke/joke_screen_widgets.dart';
 import 'package:flutterchucknorris/screens/savedjokes/bloc/saved_jokes_bloc.dart';
 
 class SavedJokesScreen extends StatelessWidget {
+  static const routeName = '/saved_jokes';
   final JokeRepository jokeRepository;
 
   SavedJokesScreen({this.jokeRepository});
