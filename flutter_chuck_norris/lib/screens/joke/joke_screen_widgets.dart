@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchucknorris/screens/joke/bloc/joke_bloc.dart';
-import 'package:flutterchucknorris/screens/joke/bloc/joke_screen_states.dart';
+import 'package:flutterchucknorris/screens/joke/bloc/joke_states.dart';
 
-import 'bloc/joke_screen_events.dart';
+import 'bloc/joke_events.dart';
 
 class JokeWidget extends StatelessWidget {
   @override
@@ -12,8 +12,8 @@ class JokeWidget extends StatelessWidget {
     //Keep the BlocBuilder as low as possible in the view hierarchy, since they
     //will redraw on state changed, and we don't want to redraw whole screens if just
     //a part of it changed
-    return BlocListener<JokeBloc, JokeScreenState>(
-      listener: (BuildContext context, JokeScreenState state) {
+    return BlocListener<JokeBloc, JokeState>(
+      listener: (BuildContext context, JokeState state) {
         if (state is JokeSavedState) {
           Scaffold.of(context).showSnackBar(
             SnackBar(
@@ -23,7 +23,7 @@ class JokeWidget extends StatelessWidget {
           );
         }
       },
-      child: BlocBuilder<JokeBloc, JokeScreenState>(
+      child: BlocBuilder<JokeBloc, JokeState>(
         builder: (BuildContext context, state) {
           switch (state.runtimeType) {
             case JokeUninitializedState:
@@ -50,7 +50,7 @@ class SaveJokeWidget extends StatelessWidget {
     // ignore: close_sinks, since screens.joke.bloc provider handles this automatically
     final JokeBloc jokeBloc = BlocProvider.of<JokeBloc>(context);
 
-    return BlocBuilder<JokeBloc, JokeScreenState>(
+    return BlocBuilder<JokeBloc, JokeState>(
         builder: (BuildContext context, state) {
       switch (state.runtimeType) {
         case JokeFetchedState:

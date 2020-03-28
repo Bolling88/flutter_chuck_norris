@@ -1,26 +1,26 @@
 import 'package:flutterchucknorris/api_models/joke.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
-import 'joke_screen_events.dart';
-import 'joke_screen_states.dart';
+import 'joke_events.dart';
+import 'joke_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class JokeBloc extends Bloc<JokeEvent, JokeScreenState> {
+class JokeBloc extends Bloc<JokeEvent, JokeState> {
   final JokeRepository _jokeRepository;
   Joke _currentJoke;
 
   JokeBloc(this._jokeRepository) : assert(_jokeRepository != null);
 
   @override
-  void onTransition(Transition<JokeEvent, JokeScreenState> transition) {
+  void onTransition(Transition<JokeEvent, JokeState> transition) {
     super.onTransition(transition);
     print(transition);
   }
 
   @override
-  JokeScreenState get initialState => JokeUninitializedState(null);
+  JokeState get initialState => JokeUninitializedState(null);
 
   @override
-  Stream<JokeScreenState> mapEventToState(JokeEvent event) async* {
+  Stream<JokeState> mapEventToState(JokeEvent event) async* {
     try {
       switch(event.runtimeType){
         case JokeEventRefresh:

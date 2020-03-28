@@ -1,24 +1,24 @@
 import 'package:flutterchucknorris/api_models/joke.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
-import 'saved_jokes_screen_events.dart';
-import 'saved_jokes_screen_states.dart';
+import 'saved_jokes_events.dart';
+import 'saved_jokes_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SavedJokesBloc extends Bloc<SavedJokesScreenEvents, SavedJokesScreenStates> {
+class SavedJokesBloc extends Bloc<SavedJokeEvent, SavedJokesStates> {
   final JokeRepository _jokeRepository;
   SavedJokesBloc(this._jokeRepository) : assert(_jokeRepository != null);
 
   @override
-  void onTransition(Transition<SavedJokesScreenEvents, SavedJokesScreenStates> transition) {
+  void onTransition(Transition<SavedJokeEvent, SavedJokesStates> transition) {
     super.onTransition(transition);
     print(transition);
   }
 
   @override
-  SavedJokesScreenStates get initialState => NoJokesSavedState();
+  SavedJokesStates get initialState => NoJokesSavedState();
 
   @override
-  Stream<SavedJokesScreenStates> mapEventToState(SavedJokesScreenEvents event) async* {
+  Stream<SavedJokesStates> mapEventToState(SavedJokeEvent event) async* {
     try {
       switch(event.runtimeType){
 

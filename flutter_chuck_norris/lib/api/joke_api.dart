@@ -20,7 +20,7 @@ class JokeApi {
     if (response.statusCode == successCode) {
       return Joke.fromJson(responseString);
     } else {
-      throw Exception('failed to load players');
+      throw Exception('failed to load jokes');
     }
   }
 }

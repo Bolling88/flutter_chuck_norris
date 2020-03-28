@@ -1,34 +1,34 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutterchucknorris/api_models/joke.dart';
 
-abstract class JokeScreenState extends Equatable{
+abstract class JokeState extends Equatable{
   final Joke joke;
-  const JokeScreenState(this.joke);
+  const JokeState(this.joke);
 
   @override
   List<Object> get props => [joke];
 }
 
-class JokeUninitializedState extends JokeScreenState {
+class JokeUninitializedState extends JokeState {
   const JokeUninitializedState(Joke joke) : super(joke);
 }
 
-class JokeFetchingState extends JokeScreenState {
+class JokeFetchingState extends JokeState {
   const JokeFetchingState(Joke joke) : super(joke);
 }
 
-class JokeFetchedState extends JokeScreenState {
+class JokeFetchedState extends JokeState {
   const JokeFetchedState(Joke joke) : super(joke);
 }
 
-class JokeErrorState extends JokeScreenState {
+class JokeErrorState extends JokeState {
   const JokeErrorState(Joke joke) : super(joke);
 }
 
-class JokeEmptyState extends JokeScreenState {
+class JokeEmptyState extends JokeState {
   const JokeEmptyState(Joke joke) : super(joke);
 }
 
-class JokeSavedState extends JokeScreenState {
+class JokeSavedState extends JokeState {
   const JokeSavedState(Joke joke) : super(joke);
 }

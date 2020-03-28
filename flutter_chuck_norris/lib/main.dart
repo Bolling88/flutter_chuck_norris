@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutterchucknorris/api/joke_api.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
 import 'package:flutterchucknorris/screens/joke/joke_screen.dart';
 import 'package:flutterchucknorris/screens/savedjokes/saved_jokes_screen.dart';
 
 void main() {
-  JokeRepository _repository = JokeRepository();
+  final JokeApi _jokeApi = JokeApi();
+  final JokeRepository _repository = JokeRepository(_jokeApi);
   runApp(MyApp(_repository));
 }
 

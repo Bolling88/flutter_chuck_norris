@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
-import 'package:flutterchucknorris/screens/joke/bloc/joke_screen_states.dart';
+import 'package:flutterchucknorris/screens/joke/bloc/joke_states.dart';
 import 'package:flutterchucknorris/screens/joke/joke_screen_widgets.dart';
 import 'package:flutterchucknorris/screens/savedjokes/saved_jokes_screen.dart';
 
 import 'bloc/joke_bloc.dart';
-import 'bloc/joke_screen_events.dart';
+import 'bloc/joke_events.dart';
 
 class JokeScreen extends StatelessWidget {
   //used for navigating to this route
