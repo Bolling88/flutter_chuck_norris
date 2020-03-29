@@ -33,6 +33,7 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
           }
           break;
         case JokeEventSave:
+          await _jokeRepository.saveJoke(_currentJoke);
           yield JokeSavedState(_currentJoke);
           break;
       }

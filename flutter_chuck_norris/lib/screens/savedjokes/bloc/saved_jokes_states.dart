@@ -1,14 +1,23 @@
-import 'package:flutterchucknorris/api_models/joke_mapper.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutterchucknorris/db/models/joke.dart';
 
-abstract class SavedJokesStates {}
-class NoJokesSavedState extends SavedJokesStates {}
-class JokeFetchingState extends SavedJokesStates {}
+abstract class SavedJokesStates extends Equatable{
+  const SavedJokesStates();
 
-class JokeFetchedState extends SavedJokesStates {
-  final Joke joke;
-  JokeFetchedState({this.joke});
+  @override
+  List<Object> get props => [];
 }
-class JokeErrorState extends SavedJokesStates {}
-class JokeEmptyState extends SavedJokesStates {}
-class JokeSavedState extends SavedJokesStates {}
+
+class SavedJokesLoadingState extends SavedJokesStates {}
+
+class SavedJokesLoadedState extends SavedJokesStates {
+  final List<Joke> jokes;
+  const SavedJokesLoadedState(this.jokes);
+
+  @override
+  List<Object> get props => [jokes];
+}
+
+class SavedJokesEmptyState extends SavedJokesStates {}
+
+class SavedJokesErrorState extends SavedJokesStates {}
