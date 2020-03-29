@@ -1,4 +1,3 @@
-import 'package:flutterchucknorris/api_models/joke.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
 import 'saved_jokes_events.dart';
 import 'saved_jokes_states.dart';

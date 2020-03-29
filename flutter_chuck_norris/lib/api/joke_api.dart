@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:flutterchucknorris/api_models/joke.dart';
+import 'package:flutterchucknorris/api_models/joke_mapper.dart';
+import 'package:flutterchucknorris/db/models/joke.dart';
 import 'package:http/http.dart' as http;
 
 class JokeApi {
@@ -18,7 +19,8 @@ class JokeApi {
     final responseString = jsonDecode(response.body);
 
     if (response.statusCode == successCode) {
-      return Joke.fromJson(responseString);
+      var jokeMapper = JokeMapper.fromJson(responseString);
+      return Joke.fromJokeMapper(jokeMapper);
     } else {
       throw Exception('failed to load jokes');
     }

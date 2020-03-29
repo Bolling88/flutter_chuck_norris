@@ -1,4 +1,4 @@
-import 'package:flutterchucknorris/api_models/joke.dart';
+import 'package:flutterchucknorris/db/models/joke.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
 import 'joke_events.dart';
 import 'joke_states.dart';
@@ -43,6 +43,6 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
 
   Future<Joke> refreshJoke() async {
        return await _jokeRepository
-        .getRandomJoke();
+        .fetchJoke();
   }
 }

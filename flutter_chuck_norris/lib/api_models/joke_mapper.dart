@@ -1,12 +1,12 @@
-class Joke {
+class JokeMapper {
   String iconUrl;
   String id;
   String url;
   String value;
 
-  Joke({this.iconUrl, this.id, this.url, this.value});
+  JokeMapper({this.iconUrl, this.id, this.url, this.value});
 
-  Joke.fromJson(Map<String, dynamic> json) {
+  JokeMapper.fromJson(Map<String, dynamic> json) {
     iconUrl = json['icon_url'];
     id = json['id'];
     url = json['url'];

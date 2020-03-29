@@ -8,13 +8,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutterchucknorris/api/joke_api.dart';
+import 'package:flutterchucknorris/db/app_database.dart';
 
 import 'package:flutterchucknorris/main.dart';
 import 'package:flutterchucknorris/repository/joke_repository.dart';
 
-void main() {
+void main() async {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
+    final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
     final JokeApi _jokeApi = JokeApi();
     final JokeRepository repository = JokeRepository(_jokeApi);
     await tester.pumpWidget(MyApp(repository));

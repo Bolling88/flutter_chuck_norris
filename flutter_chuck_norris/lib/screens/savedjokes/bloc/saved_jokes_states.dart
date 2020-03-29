@@ -1,4 +1,5 @@
-import 'package:flutterchucknorris/api_models/joke.dart';
+import 'package:flutterchucknorris/api_models/joke_mapper.dart';
+import 'package:flutterchucknorris/db/models/joke.dart';
 
 abstract class SavedJokesStates {}
 class NoJokesSavedState extends SavedJokesStates {}

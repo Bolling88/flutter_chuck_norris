@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutterchucknorris/api_models/joke.dart';
+import 'package:flutterchucknorris/api_models/joke_mapper.dart';
+import 'package:flutterchucknorris/db/models/joke.dart';
 
 abstract class JokeState extends Equatable{
   final Joke joke;
