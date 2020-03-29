@@ -18,13 +18,13 @@ class SavedJokesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<SavedJokesBloc>(
       create: (context) => SavedJokesBloc(_jokeRepository),
-      child: JokeScreenContent(),
+      child: SavedJokeScreenContent(),
     );
   }
 }
 
-class JokeScreenContent extends StatelessWidget {
-  const JokeScreenContent({
+class SavedJokeScreenContent extends StatelessWidget {
+  const SavedJokeScreenContent({
     Key key,
   }) : super(key: key);
 

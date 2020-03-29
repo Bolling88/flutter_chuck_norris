@@ -8,4 +8,4 @@ abstract class SavedJokeEvent extends Equatable{
   List<Object> get props => [];
 }
 
-class JokeBlocCreatedEvent extends SavedJokeEvent {}
+class JokeEventBlocCreated extends SavedJokeEvent {}

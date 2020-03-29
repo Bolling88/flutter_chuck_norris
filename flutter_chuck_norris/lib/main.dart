@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
       },
       theme:
           ThemeData(primarySwatch: Colors.blue, backgroundColor: Colors.white),
-      home: JokeScreen(_jokeRepository),
     );
   }
 }

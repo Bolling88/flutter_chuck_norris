@@ -8,7 +8,9 @@ class JokeBloc extends Bloc<JokeEvent, JokeState> {
   final JokeRepository _jokeRepository;
   Joke _currentJoke;
 
-  JokeBloc(this._jokeRepository) : assert(_jokeRepository != null);
+  JokeBloc(this._jokeRepository) : assert(_jokeRepository != null){
+    add(JokeEventRefresh());
+  }
 
   @override
   void onTransition(Transition<JokeEvent, JokeState> transition) {

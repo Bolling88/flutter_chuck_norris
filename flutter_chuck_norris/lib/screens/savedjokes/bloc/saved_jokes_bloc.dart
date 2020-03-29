@@ -10,7 +10,7 @@ class SavedJokesBloc extends Bloc<SavedJokeEvent, SavedJokesStates> {
 
   final JokeRepository _jokeRepository;
   SavedJokesBloc(this._jokeRepository){
-    add(JokeBlocCreatedEvent());
+    add(JokeEventBlocCreated());
   }
 
   @override
@@ -26,7 +26,7 @@ class SavedJokesBloc extends Bloc<SavedJokeEvent, SavedJokesStates> {
   Stream<SavedJokesStates> mapEventToState(SavedJokeEvent event) async* {
     try {
       switch(event.runtimeType){
-        case JokeBlocCreatedEvent:
+        case JokeEventBlocCreated:
           _allJokes = await _jokeRepository.getAllJokes();
           yield SavedJokesLoadedState(_allJokes);
           break;
